@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Адмін-панель — Oderman{% endblock %}
+
+{% block content %}
+<h1 class="admin-title">Додати нову піцу</h1>
+<div class="admin-form-container">
+    <form method="post" class="admin-form">
+        <label for="name">Назва піци:</label>
+        <input type="text" name="name" required>
+
+        <label for="description">Опис інгредієнтів:</label>
+        <textarea name="description" required></textarea>
+
+        <label for="price">Ціна (грн):</label>
+        <input type="number" step="0.01" name="price" required>
+
+        <button type="submit" class="admin-button">Додати піцу</button>
+    </form>
+</div>
+
+<h2>Поточне меню</h2>
+<table>
+    <tr>
+        <th>Назва</th>
+        <th>Опис</th>
+        <th>Ціна</th>
+        <th>Дії</th>
+    </tr>
+    {% for pizza in pizzas %}
+    <tr>
+        <td>{{ pizza.name }}</td>
+        <td>{{ pizza.description }}</td>
+        <td>{{ pizza.price }} грн</td>
+        <td>
+    <a href="{{ url_for('edit', id=pizza.id) }}" class="btn edit-btn">✏️</a>
+    <form action="{{ url_for('delete', id=pizza.id) }}" method="post" style="display:inline;">
+        <button type="submit" class="btn delete-btn" onclick="return confirm('Ви впевнені?')">🗑️</button>
+    </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

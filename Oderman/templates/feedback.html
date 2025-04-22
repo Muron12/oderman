@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Залишити відгук{% endblock %}
+{% block content %}
+<h2>Залишити відгук</h2>
+<form method="POST" class="feedback-form">
+  {{ form.hidden_tag() }}
+
+  <div class="form-group">
+    {{ form.name.label }}<br>
+    {{ form.name(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ form.rating.label }}<br>
+    {{ form.rating(class="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ form.comment.label }}<br>
+    {{ form.comment(class="form-control", rows=4) }}
+  </div>
+
+  <div class="form-group">
+    {{ form.submit(class="btn-submit") }}
+  </div>
+</form>
+{% endblock %}
