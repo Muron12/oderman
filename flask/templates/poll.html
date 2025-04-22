@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Опитування — Oderman{% endblock %}
+
+{% block content %}
+<h1>Яка страва вам подобається найбільше?</h1>
+<form method="post" class="admin-form">
+    {% for pizza in pizzas %}
+        <div>
+            <input type="radio" name="dish" value="{{ pizza.name }}" required>
+            <label>{{ pizza.name }}</label>
+        </div>
+    {% endfor %}
+    <br>
+    <button type="submit" class="admin-button">Проголосувати</button>
+</form>
+{% endblock %}

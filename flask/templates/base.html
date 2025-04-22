@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Oderman{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">Oderman</a>
+            <div class="navbar-links">
+                <a href="{{ url_for('index') }}">Головна</a>
+                <a href="{{ url_for('menu') }}">Меню</a>
+                <a href="{{ url_for('admin') }}">Адмін-панель</a>
+                <a href="{{ url_for('poll') }}">Опитування</a>
+                <a href="{{ url_for('results') }}">Результати</a>
+                <a href="{{ url_for('feedback') }}">Написати відгук</a>
+                <a href="{{ url_for('show_feedbacks') }}">Відгуки</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
