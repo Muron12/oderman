@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Меню — Oderman{% endblock %}
+
+{% block content %}
+    <h1>Меню</h1>
+
+    <div class="sort-buttons">
+        <a href="{{ url_for('menu', sort='asc') }}" class="sort-button">🔼 Від дешевших</a>
+        <a href="{{ url_for('menu', sort='desc') }}" class="sort-button">🔽 Від дорожчих</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Назва піци</th>
+            <th>Опис інгредієнтів</th>
+            <th>Ціна</th>
+        </tr>
+        {% for pizza in pizzas %}
+        <tr>
+            <td>{{ pizza.name }}</td>
+            <td>{{ pizza.description }}</td>
+            <td>{{ pizza.price }} грн</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('index') }}" class="back-button">Назад</a>
+{% endblock %}

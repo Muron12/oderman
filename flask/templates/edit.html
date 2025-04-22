@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Редагування — Oderman{% endblock %}
+
+{% block content %}
+<h1>Редагувати опис піци: <em>{{ pizza.name }}</em></h1>
+
+<form method="post" class="admin-form">
+    <label for="description">Новий опис:</label>
+    <textarea name="description" required>{{ pizza.description }}</textarea><br><br>
+    <button type="submit" class="admin-button">Зберегти</button>
+</form>
+
+<a href="{{ url_for('admin') }}" class="back-button">← Назад</a>
+{% endblock %}
